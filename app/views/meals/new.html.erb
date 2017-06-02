@@ -36,13 +36,18 @@
         <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="<%= @meal.image %>">
       </div>
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for recipe link -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="link" class="control-label">
+          Recipe Link (Optional)
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @meal.user_id %>">
+        <input type="text" id="link" name="link" placeholder="Link" class="form-control" value="<%= @meal.link %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">

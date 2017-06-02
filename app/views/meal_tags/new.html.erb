@@ -21,9 +21,10 @@
       <!-- Label and input for meal_id -->
       <div class="form-group">
         <label for="meal_id" class="control-label">
-          Meal
+          <%= @meal.name %>
         </label>
-        <%= select_tag(:meal_id, options_from_collection_for_select(Meal.all, :id, :name), :class => "form-control") %>
+          <input type="hidden" id="meal_id" name="meal_id" class="form-control" value="<%= @meal.id %>">
+        </div>
       </div>
 
       <!-- Label and input for tag_id -->

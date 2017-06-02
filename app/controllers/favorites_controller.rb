@@ -13,17 +13,25 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new
-
+    status = params[:status]
     @favorite.meal_id = params[:meal_id]
     @favorite.user_id = current_user.id
 
     save_status = @favorite.save
-
-    if save_status == true
-      redirect_to("/meals/", :notice => "Favorite created successfully.")
+    if status == 0
+      if save_status == true
+        redirect_to("/meals/", :notice => "Favorite created successfully.")
+      else
+        redirect_to("/meals/", :notice => "Favorite not created.")
+      end
     else
-      redirect_to("/meals/", :notice => "Favorite not created.")
+      if save_status == true
+        redirect_to("/meals/:meal_id", :notice => "Favorite created successfully.")
+      else
+        redirect_to("/meals/:meal_id", :notice => "Favorite not created.")
+      end
     end
+  else
   end
 
   def destroy

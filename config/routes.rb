@@ -86,24 +86,14 @@ Rails.application.routes.draw do
 
   # Routes for the Meal_tag resource:
   # CREATE
-  get "/meal_tags/new", :controller => "meal_tags", :action => "new"
+  get "/meal_tags/new/:meal_id", :controller => "meal_tags", :action => "new"
   post "/create_meal_tag", :controller => "meal_tags", :action => "create"
 
-  # READ
-  get "/meal_tags", :controller => "meal_tags", :action => "index"
-  get "/meal_tags/:id", :controller => "meal_tags", :action => "show"
-
-  # UPDATE
-  get "/meal_tags/:id/edit", :controller => "meal_tags", :action => "edit"
-  post "/update_meal_tag/:id", :controller => "meal_tags", :action => "update"
-
-  # DELETE
-  get "/delete_meal_tag/:id", :controller => "meal_tags", :action => "destroy"
   #------------------------------
 
   # Routes for the Favorite resource:
   # CREATE
-  get "/favorites/create/:meal_id", :controller => "favorites", :action => "create"
+  get "/favorites/create/:status/:meal_id", :controller => "favorites", :action => "create"
 
   # READ
   get "/favorites", :controller => "favorites", :action => "index"

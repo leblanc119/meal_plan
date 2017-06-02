@@ -11,7 +11,6 @@
 <div class="page-header">
   <h3>Add Plan</h3>
 </div>
-
 <div class="row">
   <div class="col-md-12">
     <form action="/create_plan" method="post">
@@ -20,11 +19,7 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @plan.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for date -->
