@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2>
+    All Meals
+    <a href="/meals/new" class="btn btn-sm btn-success">Add a New Meal</a>
+  </h2>
+</div>
+
+<% @meals.each do |meal| %>
+
+<div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" src="<%= meal.image %>" align = "middle" alt="<%= meal.name %>" style="max-height: 100px; max-width: 100px;">
+    </a>
+  </div>
+
+  <div class="media-body">
+    <a href="/meals/<%= meal.id %>"><h4 class="media-heading"><%= meal.name %></h4></a>
+    <% favorite_count = 0 %>
+    <% current_user.favorites.each do |favorite| %>
+        <% if favorite.meal_id == meal.id %>
+            <a href="/delete_favorite/<%= favorite.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart" aria-hidden="true"></i> Remove from Favorites </a>
+            <% favorite_count = 1 %>
+        <% end %>
+    <% end %>
+    <% if favorite_count == 0 %>
+      <a href="/favorites/create/<%= meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Favorites </a>
+    <% end %>
+    <a href="/" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to Meal Plan </a>
+<div>
+  Tags:
+  <% meal.meal_tags.each do |mealtag| %>
+  <span class="label label-warning"><%= mealtag.tag.name %></span>
+  <% end %>
+</div>
+  </div>
+</div>
+<% end %>

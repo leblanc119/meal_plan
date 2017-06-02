@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Mealplans
+    <a href="/mealplans/new" class="btn btn-lg btn-success">New Mealplan</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Mealtime</th>
+        <th>Meal</th>
+        <th>Plan</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @mealplans.each do |mealplan| %>
+      <tr>
+        <td><%= mealplan.mealtime_id %></td>
+        <td><%= mealplan.meal_id %></td>
+        <td><%= mealplan.plan_id %></td>
+        <td>
+          <a href="/mealplans/<%= mealplan.id %>" class="btn btn-primary">Show</a>
+          <a href="/mealplans/<%= mealplan.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_mealplan/<%= mealplan.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

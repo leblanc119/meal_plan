@@ -1,0 +1,45 @@
+<!-- Validation failure messages -->
+<% if @meal_tag.errors.any? %>
+  <% @meal_tag.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add a Meal Tag</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_meal_tag" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+        <%= select_tag(:meal_id, options_from_collection_for_select(Meal.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for tag_id -->
+      <div class="form-group">
+        <label for="tag_id" class="control-label">
+          Tag
+        </label>
+
+        <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-success">
+        Create Meal Tag
+      </button>
+      or
+      <a href="/meal_tags">Cancel</a>
+    </form>
+  </div>
+</div>

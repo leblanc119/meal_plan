@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h2>
+    <%= @meal.name %>
+    <% favorite_count = 0 %>
+    <% current_user.favorites.each do |favorite| %>
+        <% if favorite.meal_id == @meal.id %>
+            <a href="/delete_favorite/<%= favorite.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart" aria-hidden="true"></i> Remove from Favorites </a>
+            <% favorite_count = 1 %>
+        <% end %>
+    <% end %>
+    <% if favorite_count == 0 %>
+      <a href="/favorites/create/<%= @meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Favorites </a>
+    <% end %>
+    <a href="/" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to Meal Plan </a>
+  </h2>
+</div>
+
+  <div class="col-md-12 mb-2">
+
+      <dd><img src="<%= @meal.image %>" style="max-width: 200px;"></dd>
+
+<dt><a href="<%= @meal.link %>">Link to Recipe</a></dt>
+      <p><dt>Tags:
+        <% @meal.meal_tags.each do |mealtag| %>
+        <span class="label label-warning"><%= mealtag.tag.name %></span>
+        <% end %>
+      </dt>
+      <a href="/meal_tags/new"> Add a new tag </a>
+      <p>
+
+      <dt>Added by: <%= @meal.user.first_name %></dt>
+      <p>
+
+
+    <div class="btn-group btn-group-justified">
+      <a href="/meals" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/meals/<%= @meal.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_meal/<%= @meal.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>

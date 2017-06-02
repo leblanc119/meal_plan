@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @mealplan.errors.any? %>
+  <% @mealplan.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Mealplan</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_mealplan" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for mealtime_id -->
+      <div class="form-group">
+        <label for="mealtime_id" class="control-label">
+          Mealtime
+        </label>
+
+        <input type="text" id="mealtime_id" name="mealtime_id" placeholder="Mealtime" class="form-control" value="<%= @mealplan.mealtime_id %>">
+      </div>
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @mealplan.meal_id %>">
+      </div>
+
+      <!-- Label and input for plan_id -->
+      <div class="form-group">
+        <label for="plan_id" class="control-label">
+          Plan
+        </label>
+
+        <input type="text" id="plan_id" name="plan_id" placeholder="Plan" class="form-control" value="<%= @mealplan.plan_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Mealplan
+      </button>
+      or
+      <a href="/mealplans">Cancel</a>
+    </form>
+  </div>
+</div>

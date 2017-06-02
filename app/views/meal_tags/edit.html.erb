@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @meal_tag.errors.any? %>
+  <% @meal_tag.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Meal Tag #<%= @meal_tag.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_meal_tag/<%= @meal_tag.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @meal_tag.meal_id %>">
+      </div>
+
+      <!-- Label and input for tag_id -->
+      <div class="form-group">
+        <label for="tag_id" class="control-label">
+          Tag
+        </label>
+
+        <input type="text" id="tag_id" name="tag_id" placeholder="Tag" class="form-control" value="<%= @meal_tag.tag_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Meal Tag
+      </button>
+      or
+      <a href="/meal_tags/<%= @meal_tag.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
