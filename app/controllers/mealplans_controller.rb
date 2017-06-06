@@ -12,6 +12,7 @@ class MealplansController < ApplicationController
   end
 
   def new
+    @plan = Plan.find(params[:id])
     @mealplan = Mealplan.new
 
     render("mealplans/new.html.erb")

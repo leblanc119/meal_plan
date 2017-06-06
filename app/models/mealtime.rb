@@ -10,5 +10,5 @@
 
 class Mealtime < ApplicationRecord
   has_many :meal_plans, :dependent => :destroy
-validates :time, :presence => true
+  validates :time, :presence => true
 end

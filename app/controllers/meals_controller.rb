@@ -37,7 +37,9 @@ class MealsController < ApplicationController
   def edit
     @meal = Meal.find(params[:id])
 
-    render("meals/edit.html.erb")
+    if @meal.user != current_user
+      redirect_to("/meals/#{@meal.id}", :notice => "You must be the contributor of the meal to make edits")
+    end
   end
 
   def update

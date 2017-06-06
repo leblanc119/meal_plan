@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add a Meal Tag</h3>
+  <h3>Add a Meal Tag for <%= @meal.name %></h3>
 </div>
 
 <div class="row">
@@ -20,9 +20,6 @@
 
       <!-- Label and input for meal_id -->
       <div class="form-group">
-        <label for="meal_id" class="control-label">
-          <%= @meal.name %>
-        </label>
           <input type="hidden" id="meal_id" name="meal_id" class="form-control" value="<%= @meal.id %>">
         </div>
       </div>

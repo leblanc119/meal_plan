@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Routes for the Mealplan resource:
   # CREATE
-  get "/mealplans/new", :controller => "mealplans", :action => "new"
+  get "/mealplans/new/:id", :controller => "mealplans", :action => "new"
   post "/create_mealplan", :controller => "mealplans", :action => "create"
 
   # READ
@@ -59,10 +59,6 @@ Rails.application.routes.draw do
   get "/plans", :controller => "plans", :action => "index"
   get "/plans/:id", :controller => "plans", :action => "show"
 
-  # UPDATE
-  get "/plans/:id/edit", :controller => "plans", :action => "edit"
-  post "/update_plan/:id", :controller => "plans", :action => "update"
-
   # DELETE
   get "/delete_plan/:id", :controller => "plans", :action => "destroy"
   #------------------------------
@@ -93,11 +89,10 @@ Rails.application.routes.draw do
 
   # Routes for the Favorite resource:
   # CREATE
-  get "/favorites/create/:status/:meal_id", :controller => "favorites", :action => "create"
+  get "/favorites/create/:meal_id", :controller => "favorites", :action => "create"
 
   # READ
   get "/favorites", :controller => "favorites", :action => "index"
-  get "/favorites/:id", :controller => "favorites", :action => "show"
 
   # DELETE
   get "/delete_favorite/:id", :controller => "favorites", :action => "destroy"

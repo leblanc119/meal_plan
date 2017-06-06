@@ -1,27 +1,41 @@
 <div class="page-header">
-  <h3>Plan #<%= @plan.id %></h3>
+  <h3> Daily Plan (<%= @plan.date %>) </h3>
 </div>
+
+<a href="/mealplans/new/<%= @plan.id %>" type="button" class="btn btn-success btn-sm">Add Another Meal</a><p>
 
 <div class="row">
   <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>User</dt>
-      <dd><%= @plan.user_id %></dd>
+  <table class="table table-striped table-hover">
+      <tr>
+        <th>Meal</th>
+        <th>Meal Time</th>
+        <th>Actions</th>
+      </tr>
 
-      <dt>Date</dt>
-      <dd><%= @plan.date %></dd>
+      <% @mealplans.each do |plan| %>
+        <% if plan.user.id == current_user.id %>
+      <tr>
+        <td><%= hello %></td>
+        <td>
 
-    </dl>
+          <a href="/plans/<%= plan.id %>" class="btn btn-primary btn-xs">Show Daily Plan</a>
+          <a href="/plans/<%= plan.id %>" class="btn btn-primary btn-xs">Show Weekly Plan</a>
+          <a href="/plans/<%= plan.id %>/edit" class="btn btn-warning btn-xs">Edit</a>
+          <a href="/delete_plan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">Delete</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
 
     <div class="btn-group btn-group-justified">
       <a href="/plans" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/plans/<%= @plan.id %>/edit" class="btn btn-warning">
-        Edit
+        Back to My Plans
       </a>
       <a href="/delete_plan/<%= @plan.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
+        Delete Plan
       </a>
     </div>
   </div>

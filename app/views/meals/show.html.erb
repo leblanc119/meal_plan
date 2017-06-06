@@ -9,9 +9,9 @@
     <% end %>
     <% end %>
     <% if favorite_count == 0 %>
-    <a href="/favorites/create/1/<%= @meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Favorites </a>
+    <a href="/favorites/create/<%= @meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Favorites </a>
     <% end %>
-    <a href="/" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to Meal Plan </a>
+    <a href="/" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to a Meal Plan </a>
   </h2>
 </div>
 
@@ -28,7 +28,7 @@
   <a href="/meal_tags/new/<%= @meal.id %>"> Add a new tag </a>
   <p>
 
-    <dt>Added by: <%= @meal.user.first_name %></dt>
+    <dt>Contributed by: <%= @meal.user.first_name %></dt>
     <p>
 
 
@@ -36,11 +36,13 @@
         <a href="/meals" class="btn btn-primary">
           Back
         </a>
+        <% if @meal.user == current_user %>
         <a href="/meals/<%= @meal.id %>/edit" class="btn btn-warning">
           Edit
         </a>
         <a href="/delete_meal/<%= @meal.id %>" class="btn btn-danger" rel="nofollow">
           Delete
         </a>
+        <% end %>
       </div>
     </div>

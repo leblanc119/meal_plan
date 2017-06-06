@@ -7,6 +7,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @mealplans = Mealplan.all
 
     render("plans/show.html.erb")
   end
@@ -29,27 +30,6 @@ class PlansController < ApplicationController
       redirect_to("/plans/#{@plan.id}", :notice => "Plan created successfully.")
     else
       render("plans/new.html.erb")
-    end
-  end
-
-  def edit
-    @plan = Plan.find(params[:id])
-
-    render("plans/edit.html.erb")
-  end
-
-  def update
-    @plan = Plan.find(params[:id])
-
-    @plan.user_id = params[:user_id]
-    @plan.date = params[:date]
-
-    save_status = @plan.save
-
-    if save_status == true
-      redirect_to("/plans/#{@plan.id}", :notice => "Plan updated successfully.")
-    else
-      render("plans/edit.html.erb")
     end
   end
 

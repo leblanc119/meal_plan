@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Mealplan</h3>
+  <h3>Add Meal to <%= @plan.date %> Daily Plan</h3>
 </div>
 
 <div class="row">
@@ -24,7 +24,7 @@
           Mealtime
         </label>
 
-        <input type="text" id="mealtime_id" name="mealtime_id" placeholder="Mealtime" class="form-control" value="<%= @mealplan.mealtime_id %>">
+        <%= select_tag(:mealtime_id, options_from_collection_for_select(Mealtime.all, :id, :name), :class => "form-control") %>
       </div>
 
       <!-- Label and input for meal_id -->
@@ -33,23 +33,19 @@
           Meal
         </label>
 
-        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @mealplan.meal_id %>">
+        <%= select_tag(:meal_id, options_from_collection_for_select(Meal.all, :id, :name), :class => "form-control") %>
       </div>
 
       <!-- Label and input for plan_id -->
       <div class="form-group">
-        <label for="plan_id" class="control-label">
-          Plan
-        </label>
-
-        <input type="text" id="plan_id" name="plan_id" placeholder="Plan" class="form-control" value="<%= @mealplan.plan_id %>">
+        <input type="hidden" id="plan_id" name="plan_id" class="form-control" value="<%= @plan.id %>">
       </div>
 
-      <button class="btn btn-success">
-        Create Mealplan
+      <button class="btn btn-success btn-sm">
+        Add Meal to Plan
       </button>
       or
-      <a href="/mealplans">Cancel</a>
+      <a href="/plans/<%= @plan.id %>">Cancel</a>
     </form>
   </div>
 </div>
