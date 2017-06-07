@@ -1,0 +1,512 @@
+<!-- Checking for Sunday-->
+<% if @plan.date.strftime("%A").to_s == "Sunday"%>
+  <% @sunday = @plan.date %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @sunday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Monday"%>
+  <% @sunday = @plan.date-1 %>
+  <% @monday = @plan.date %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @monday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Tuesday"%>
+  <% @sunday = @plan.date-2 %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @plan.date %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @tuesday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Wednesday"%>
+  <% @sunday = @plan.date-3 %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @plan.date %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @wednesday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Thursday"%>
+  <% @sunday = @plan.date-4 %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @plan.date %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @thursday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Friday"%>
+  <% @sunday = @plan.date-5 %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @plan.date %>
+  <% @saturday = @sunday+6 %>
+  <% @today = @friday %>
+
+<% elsif @plan.date.strftime("%A").to_s == "Saturday"%>
+  <% @sunday = @plan.date-6 %>
+  <% @monday = @sunday+1 %>
+  <% @tuesday = @sunday+2 %>
+  <% @wednesday = @sunday+3 %>
+  <% @thursday = @sunday+4 %>
+  <% @friday = @sunday+5 %>
+  <% @saturday = @plan.date %>
+  <% @today = @saturday %>
+<% end %>
+
+
+<!-- Finding each day's plan -->
+<% @all = Plan.all %>
+<% @all.each do |plan| %>
+<% if plan.user == current_user %>
+    <% if plan.date == @monday %>
+    <% @monday_plan == plan %>
+    <% elsif plan.date == @tuesday %>
+    <% @tuesday_plan == plan %>
+    <% elsif plan.date == @wednesday %>
+    <% @wednesday_plan == plan %>
+    <% elsif plan.date == @thursday %>
+    <% @thursday_plan == plan %>
+    <% elsif plan.date == @friday %>
+    <% @friday_plan == plan %>
+    <% elsif plan.date == @saturday %>
+    <% @saturday_plan == plan %>
+    <% elsif plan.date == @sunday %>
+    <% @sunday_plan == plan %>
+    <% end %>
+<% end %>
+<% end %>
+
+<!-- Header and tabs -->
+
+<div class="page-header">
+  <h2> Weekly Plan (Week of <%= @sunday.strftime("%A - %B %e, %Y") %>)
+    <a href="/plans/<%= @plan.id %>" class="btn btn-primary btn-sm">Show Daily Plan</a>
+    <a href="/plans" class="btn btn-primary btn-sm">
+      Back to My Plans
+    </a>
+  </h2>
+</div>
+
+
+<!-- Weekly Plan Display-->
+<% if @today == @sunday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Sunday</a></li>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+
+<% elsif @today == @monday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Monday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+
+<% elsif @today == @tuesday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Tuesday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+
+<% elsif @today == @wednesday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Wednesday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+
+<% elsif @today == @thursday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Thursday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+
+<% elsif @today == @friday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Friday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+
+        <% if @saturday_plan == nil %>
+        <li><a href="#">Saturday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @saturday_plan.id %>">Saturday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+<% elsif @today == @saturday %>
+<nav aria-label="...">
+  <ul class="nav nav-pills nav-justified">
+        <li class ="active"><a href="#">Saturday</a></li>
+        <% if @sunday_plan == nil %>
+        <li><a href="#">Sunday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @sunday_plan.id %>">Sunday</a></li>
+        <% end %>
+        <% if @monday_plan == nil %>
+        <li><a href="#">Monday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @monday_plan.id %>">Monday</a></li>
+        <% end %>
+
+        <% if @wednesday_plan == nil %>
+        <li><a href="#">Wednesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @wednesday_plan.id %>">Wednesday</a></li>
+        <% end %>
+
+        <% if @thursday_plan == nil %>
+        <li><a href="#">Thursday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @thursday_plan.id %>">Thursday</a></li>
+        <% end %>
+
+        <% if @friday_plan == nil %>
+        <li><a href="#">Friday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @friday_plan.id %>">Friday</a></li>
+        <% end %>
+
+        <% if @tuesday_plan == nil %>
+        <li><a href="#">Tuesday</a></li>
+        <% elsif %>
+          <li><a href="/plans/<%= @tuesday_plan.id %>">Tuesday</a></li>
+        <% end %>
+  </ul>
+  <p>
+</nav>
+<% end %>
+
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <table class="table">
+        <tbdoy>
+          <!-- Breakfast -->
+          <tr>
+            <th scope="row">Breakfast</th>
+            <% @plan.mealplans.each do |plan| %>
+            <% if plan.mealtime.time == "Breakfast" %>
+            <tr><td></td>
+            <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+            <td><% plan.meal.meal_tags.each do |tag| %>
+              <span class="label label-warning"><%= tag.tag.name %></span>
+              <% end %>
+            </td>
+            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              Remove Meal from Plan
+            </a></td></tr>
+            <% end %>
+            <% end %>
+          </tr>
+          <!-- Morning Snack -->
+          <tr>
+            <th scope="row">Morning Snack</th>
+            <% @plan.mealplans.each do |plan| %>
+            <% if plan.mealtime.time == "Morning Snack" %>
+            <tr><td></td>
+            <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+            <td><% plan.meal.meal_tags.each do |tag| %>
+              <span class="label label-warning"><%= tag.tag.name %></span>
+              <% end %>
+            </td>
+            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              Remove Meal from Plan
+            </a></td></tr>
+            <% end %>
+            <% end %>
+          </tr>
+          <!-- Lunch -->
+          <tr>
+            <th scope="row">Lunch</th>
+            <% @plan.mealplans.each do |plan| %>
+            <% if plan.mealtime.time == "Lunch" %>
+            <tr><td></td>
+            <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+            <td><% plan.meal.meal_tags.each do |tag| %>
+              <span class="label label-warning"><%= tag.tag.name %></span>
+              <% end %>
+            </td>
+            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              Remove Meal from Plan
+            </a></td></tr>
+            <% end %>
+            <% end %>
+          </tr>
+          <!-- Afternoon Snack -->
+          <tr>
+            <th scope="row">Afternoon Snack</th>
+            <% @plan.mealplans.each do |plan| %>
+            <% if plan.mealtime.time == "Afternoon Snack" %>
+            <tr><td></td>
+            <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+            <td><% plan.meal.meal_tags.each do |tag| %>
+              <span class="label label-warning"><%= tag.tag.name %></span>
+              <% end %>
+            </td>
+            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              Remove Meal from Plan
+            </a></td></tr>
+            <% end %>
+            <% end %>
+          </tr>
+          <!-- Dinner -->
+          <tr>
+            <th scope="row">Dinner</th>
+            <% @plan.mealplans.each do |plan| %>
+              <% if plan.mealtime.time == "Dinner" %>
+              <tr><td></td>
+              <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+              <td><% plan.meal.meal_tags.each do |tag| %>
+                <span class="label label-warning"><%= tag.tag.name %></span>
+                <% end %>
+              </td>
+              <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+                Remove Meal from Plan
+              </a></td>  </tr>
+              <% end %>
+            <% end %>
+          </tr>
+          <!-- Post-Dinner Snack-->
+          <tr>
+            <th scope="row">Post-Dinner Snack</th>
+            <% @plan.mealplans.each do |plan| %>
+            <% if plan.mealtime.time == "Post-Dinner Snack" %>
+            <tr><td></td>
+            <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
+            <td><% plan.meal.meal_tags.each do |tag| %>
+              <span class="label label-warning"><%= tag.tag.name %></span>
+              <% end %>
+            </td>
+            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              Remove Meal from Plan
+            </a></td></tr>
+            <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

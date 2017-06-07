@@ -1,7 +1,6 @@
 <div class="page-header">
   <h2> Daily Plan (<%= @plan.date.strftime("%A - %B %e, %Y") %>)
-    <a href="/plans/<%= @plan.id %>" class="btn btn-primary btn-sm">Show Weekly Plan</a>
-    <a href="/mealplans/new/<%= @plan.id %>" class="btn btn-success btn-sm">Add a Meal</a>
+    <a href="/mealplans/new_plan/<%= @plan.id %>" class="btn btn-success btn-sm">Add a Meal</a>
     <a href="/delete_plan/<%= @plan.id %>" class="btn btn-danger btn-sm" rel="nofollow">
       Delete Plan
     </a>
@@ -26,7 +25,7 @@
               <span class="label label-warning"><%= tag.tag.name %></span>
               <% end %>
             </td>
-            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+            <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
               Remove Meal from Plan
             </a></td></tr>
             <% end %>
@@ -43,7 +42,7 @@
               <span class="label label-warning"><%= tag.tag.name %></span>
               <% end %>
             </td>
-            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+            <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
               Remove Meal from Plan
             </a></td></tr>
             <% end %>
@@ -60,7 +59,7 @@
               <span class="label label-warning"><%= tag.tag.name %></span>
               <% end %>
             </td>
-            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+            <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
               Remove Meal from Plan
             </a></td></tr>
             <% end %>
@@ -77,7 +76,7 @@
               <span class="label label-warning"><%= tag.tag.name %></span>
               <% end %>
             </td>
-            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+            <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
               Remove Meal from Plan
             </a></td></tr>
             <% end %>
@@ -94,7 +93,7 @@
                 <span class="label label-warning"><%= tag.tag.name %></span>
                 <% end %>
               </td>
-              <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+              <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
                 Remove Meal from Plan
               </a></td>  </tr>
               <% end %>
@@ -111,7 +110,7 @@
               <span class="label label-warning"><%= tag.tag.name %></span>
               <% end %>
             </td>
-            <td><a href="" class="btn btn-danger btn-xs" rel="nofollow">
+            <td><a href="/delete_mealplan/<%= plan.id %>" class="btn btn-danger btn-xs" rel="nofollow">
               Remove Meal from Plan
             </a></td></tr>
             <% end %>

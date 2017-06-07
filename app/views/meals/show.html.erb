@@ -11,7 +11,7 @@
     <% if favorite_count == 0 %>
     <a href="/favorites/create/<%= @meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Favorites </a>
     <% end %>
-    <a href="/" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to a Meal Plan </a>
+    <a href="/mealplans/new_meal/<%= @meal.id %>" class = "btn btn-sm" role="button"><i class="fa fa-th-list" aria-hidden="true"></i> Add to a Meal Plan </a>
   </h2>
 </div>
 

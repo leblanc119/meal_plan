@@ -1,6 +1,8 @@
 class MealsController < ApplicationController
   def index
-    @meals = Meal.all
+    @meals = Meal.all.order(name: :asc)
+    #@q = Meal.ransack(params[:q])
+    #@meals = @q.result(:distinct => true).includes(:meal_tags)
 
     render("meals/index.html.erb")
   end
@@ -65,7 +67,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     if URI(request.referer).path == "/meals/#{@meal.id}"
-      redirect_to("/", :notice => "Meal deleted.")
+      redirect_to("/meals", :notice => "Meal deleted.")
     else
       redirect_to(:back, :notice => "Meal deleted.")
     end

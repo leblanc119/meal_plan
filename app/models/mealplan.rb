@@ -12,10 +12,10 @@
 
 class Mealplan < ApplicationRecord
   belongs_to :meal
-belongs_to :plan
-belongs_to :mealtime
+  belongs_to :plan
+  belongs_to :mealtime
 
-validates :plan_id, :presence => true
-validates :mealtime_id, :presence => true
-validates :meal_id, :presence => true
+  validates :plan_id, :presence => true
+  validates :mealtime_id, :presence => true
+  validates :meal_id, :presence => true
 end

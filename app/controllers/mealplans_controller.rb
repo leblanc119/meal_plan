@@ -5,11 +5,18 @@ class MealplansController < ApplicationController
     render("mealplans/index.html.erb")
   end
 
-  def new
-    @plan = Plan.find(params[:id])
+  def newf_plan
+    @plan = Plan.find(params[:plan_id])
     @mealplan = Mealplan.new
 
-    render("mealplans/new.html.erb")
+    render("mealplans/newf_plan.html.erb")
+  end
+
+  def newf_meal
+    @meal = Meal.find(params[:meal_id])
+    @mealplan = Mealplan.new
+
+    render("mealplans/newf_meal.html.erb")
   end
 
   def create
@@ -24,7 +31,7 @@ class MealplansController < ApplicationController
     if save_status == true
       redirect_to("/plans/#{@mealplan.plan_id}", :notice => "Meal added successfully.")
     else
-      render("mealplans/new.html.erb")
+      redirect_to("/plans/#{@mealplan.plan_id}", :notice => "Meal not added successfully.")
     end
   end
 

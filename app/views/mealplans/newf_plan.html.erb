@@ -1,0 +1,51 @@
+<!-- Validation failure messages -->
+<% if @mealplan.errors.any? %>
+  <% @mealplan.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Meal to Daily Plan for <%= @plan.date.strftime("%A - %B %e, %Y") %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_mealplan" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for mealtime_id -->
+      <div class="form-group">
+        <label for="mealtime_id" class="control-label">
+          Time of Meal
+        </label>
+
+        <%= select_tag(:mealtime_id, options_from_collection_for_select(Mealtime.all, :id, :time), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+
+        <%= select_tag(:meal_id, options_from_collection_for_select(Meal.all.order(name: :asc), :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for plan_id -->
+      <div class="form-group">
+        <input type="hidden" id="plan_id" name="plan_id" class="form-control" value="<%= @plan.id %>">
+      </div>
+
+      <button class="btn btn-success btn-sm">
+        Add Meal to Plan
+      </button>
+      or
+      <a href="/plans/<%= @plan.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

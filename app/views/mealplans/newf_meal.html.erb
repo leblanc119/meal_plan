@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Meal to <%= @plan.date %> Daily Plan</h3>
+  <h3>Add <%=@meal.name %> to Daily Plan</h3>
 </div>
 
 <div class="row">
@@ -18,10 +18,19 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for plan_id -->
+      <div class="form-group">
+        <label for="plan_id" class="control-label">
+          Plan Date
+        </label>
+
+        <%= select_tag(:plan_id, options_from_collection_for_select(Plan.all.order(date: :desc), :id, :date), :class => "form-control") %>
+      </div>
+
       <!-- Label and input for mealtime_id -->
       <div class="form-group">
         <label for="mealtime_id" class="control-label">
-          Mealtime
+          Time of Meal
         </label>
 
         <%= select_tag(:mealtime_id, options_from_collection_for_select(Mealtime.all, :id, :time), :class => "form-control") %>
@@ -29,23 +38,14 @@
 
       <!-- Label and input for meal_id -->
       <div class="form-group">
-        <label for="meal_id" class="control-label">
-          Meal
-        </label>
-
-        <%= select_tag(:meal_id, options_from_collection_for_select(Meal.all, :id, :name), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for plan_id -->
-      <div class="form-group">
-        <input type="hidden" id="plan_id" name="plan_id" class="form-control" value="<%= @plan.id %>">
+        <input type="hidden" id="meal_id" name="meal_id" class="form-control" value="<%= @meal.id %>">
       </div>
 
       <button class="btn btn-success btn-sm">
         Add Meal to Plan
       </button>
       or
-      <a href="/plans/<%= @plan.id %>">Cancel</a>
+      <a href="/meals">Cancel</a>
     </form>
   </div>
 </div>
