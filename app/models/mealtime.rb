@@ -9,6 +9,6 @@
 #
 
 class Mealtime < ApplicationRecord
-  has_many :meal_plans, :dependent => :destroy
+  has_many :mealplans, :dependent => :destroy
   validates :time, :presence => true
 end

@@ -1,26 +1,20 @@
 <div class="page-header">
-  <h1>
-    Mealtimes
-    <a href="/mealtimes/new" class="btn btn-lg btn-success">New Mealtime</a>
-  </h1>
+  <h2>
+    Meal Times
+    <a href="/mealtimes/new" class="btn btn-lg btn-success btn-sm">Add a New Meal Time</a>
+  </h2>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Time</th>
-        <th>Actions</th>
+        <th>Meal Time</th>
       </tr>
 
       <% @mealtimes.each do |mealtime| %>
       <tr>
         <td><%= mealtime.time %></td>
-        <td>
-          <a href="/mealtimes/<%= mealtime.id %>" class="btn btn-primary">Show</a>
-          <a href="/mealtimes/<%= mealtime.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_mealtime/<%= mealtime.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
       </tr>
       <% end %>
     </table>

@@ -24,7 +24,7 @@
           Mealtime
         </label>
 
-        <%= select_tag(:mealtime_id, options_from_collection_for_select(Mealtime.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:mealtime_id, options_from_collection_for_select(Mealtime.all, :id, :time), :class => "form-control") %>
       </div>
 
       <!-- Label and input for meal_id -->

@@ -5,12 +5,6 @@ class MealplansController < ApplicationController
     render("mealplans/index.html.erb")
   end
 
-  def show
-    @mealplan = Mealplan.find(params[:id])
-
-    render("mealplans/show.html.erb")
-  end
-
   def new
     @plan = Plan.find(params[:id])
     @mealplan = Mealplan.new
@@ -28,7 +22,7 @@ class MealplansController < ApplicationController
     save_status = @mealplan.save
 
     if save_status == true
-      redirect_to("/mealplans/#{@mealplan.id}", :notice => "Mealplan created successfully.")
+      redirect_to("/plans/#{@mealplan.plan_id}", :notice => "Meal added successfully.")
     else
       render("mealplans/new.html.erb")
     end
@@ -50,7 +44,7 @@ class MealplansController < ApplicationController
     save_status = @mealplan.save
 
     if save_status == true
-      redirect_to("/mealplans/#{@mealplan.id}", :notice => "Mealplan updated successfully.")
+      redirect_to("/mealplans/#{@mealplan.id}", :notice => "Meal updated successfully.")
     else
       render("mealplans/edit.html.erb")
     end
@@ -62,9 +56,9 @@ class MealplansController < ApplicationController
     @mealplan.destroy
 
     if URI(request.referer).path == "/mealplans/#{@mealplan.id}"
-      redirect_to("/", :notice => "Mealplan deleted.")
+      redirect_to("/", :notice => "Meal deleted from your plan.")
     else
-      redirect_to(:back, :notice => "Mealplan deleted.")
+      redirect_to(:back, :notice => "Meal deleted from your plan.")
     end
   end
 end

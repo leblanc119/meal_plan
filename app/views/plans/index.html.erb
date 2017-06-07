@@ -16,7 +16,7 @@
       <% @plans.each do |plan| %>
         <% if plan.user.id == current_user.id %>
       <tr>
-        <td><%= plan.date %></td>
+        <td><%= plan.date.strftime("%A - %B %e, %Y") %></td>
         <td>
 
           <a href="/plans/<%= plan.id %>" class="btn btn-primary btn-xs">View Daily Plan</a>

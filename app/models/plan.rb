@@ -12,9 +12,9 @@
 class Plan < ApplicationRecord
 
   belongs_to :user
-has_many :meal_plans, :dependent => :destroy
+  has_many :mealplans, :dependent => :destroy
 
-validates :user_id, :presence => true
-validates :user_id, :uniqueness => { :scope => [:date] }
-validates :date, :presence => true
+  validates :user_id, :presence => true
+  validates :user_id, :uniqueness => { :scope => [:date] }
+  validates :date, :presence => true
 end

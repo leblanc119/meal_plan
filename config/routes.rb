@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   # READ
   get "/mealplans", :controller => "mealplans", :action => "index"
-  get "/mealplans/:id", :controller => "mealplans", :action => "show"
 
   # UPDATE
   get "/mealplans/:id/edit", :controller => "mealplans", :action => "edit"
@@ -40,11 +39,6 @@ Rails.application.routes.draw do
 
   # READ
   get "/mealtimes", :controller => "mealtimes", :action => "index"
-  get "/mealtimes/:id", :controller => "mealtimes", :action => "show"
-
-  # UPDATE
-  get "/mealtimes/:id/edit", :controller => "mealtimes", :action => "edit"
-  post "/update_mealtime/:id", :controller => "mealtimes", :action => "update"
 
   # DELETE
   get "/delete_mealtime/:id", :controller => "mealtimes", :action => "destroy"

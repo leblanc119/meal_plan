@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @plan.errors.any? %>
-  <% @plan.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @plan.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -28,7 +28,13 @@
           Date
         </label>
 
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @plan.date %>">
+        <div class='input-group date' id='datetimepicker1'>
+          <input type='text' class="form-control" name="date" id="date">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+
       </div>
 
       <button class="btn btn-success btn-sm">
@@ -39,3 +45,10 @@
     </form>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+                format: 'MM/DD/YYYY'});
+  });
+</script>

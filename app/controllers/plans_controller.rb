@@ -22,7 +22,7 @@ class PlansController < ApplicationController
     @plan = Plan.new
 
     @plan.user_id = params[:user_id]
-    @plan.date = params[:date]
+    @plan.date = Chronic.parse(params[:date])
 
     save_status = @plan.save
 
