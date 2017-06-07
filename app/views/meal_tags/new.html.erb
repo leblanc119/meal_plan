@@ -29,7 +29,6 @@
         <label for="tag_id" class="control-label">
           Tag
         </label>
-
         <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :name), :class => "form-control") %>
       </div>
 
@@ -37,7 +36,7 @@
         Create Meal Tag
       </button>
       or
-      <a href="/meal_tags">Cancel</a>
+      <a href="/meals/<%= @meal.id %>">Cancel</a>
     </form>
   </div>
 </div>

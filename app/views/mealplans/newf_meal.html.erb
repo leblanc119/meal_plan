@@ -23,7 +23,7 @@
         <label for="plan_id" class="control-label">
           Plan Date
         </label>
-
+<a href="/plans/new"> Create a New Plan</a>
         <%= select_tag(:plan_id, options_from_collection_for_select(Plan.all.order(date: :desc), :id, :date), :class => "form-control") %>
       </div>
 

@@ -8,10 +8,6 @@ Rails.application.routes.draw do
   # READ
   get "/mealplans", :controller => "mealplans", :action => "index"
 
-  # UPDATE
-  get "/mealplans/:id/edit", :controller => "mealplans", :action => "edit"
-  post "/update_mealplan/:id", :controller => "mealplans", :action => "update"
-
   # DELETE
   get "/delete_mealplan/:id", :controller => "mealplans", :action => "destroy"
   #------------------------------
@@ -34,15 +30,10 @@ Rails.application.routes.draw do
   #------------------------------
 
   # Routes for the Mealtime resource:
-  # CREATE
-  get "/mealtimes/new", :controller => "mealtimes", :action => "new"
-  post "/create_mealtime", :controller => "mealtimes", :action => "create"
 
   # READ
   get "/mealtimes", :controller => "mealtimes", :action => "index"
 
-  # DELETE
-  get "/delete_mealtime/:id", :controller => "mealtimes", :action => "destroy"
   #------------------------------
 
   # Routes for the Plan resource:
@@ -53,8 +44,6 @@ Rails.application.routes.draw do
   # READ
   get "/plans", :controller => "plans", :action => "index"
   get "/plans/:id", :controller => "plans", :action => "show"
-  get "/plans/week/:id", :controller => "plans", :action =>"show_week"
-  get "/plans/weekday/:id", :controller => "plans", :action =>"show_week"
 
   # DELETE
   get "/delete_plan/:id", :controller => "plans", :action => "destroy"

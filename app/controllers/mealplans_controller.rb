@@ -35,28 +35,6 @@ class MealplansController < ApplicationController
     end
   end
 
-  def edit
-    @mealplan = Mealplan.find(params[:id])
-
-    render("mealplans/edit.html.erb")
-  end
-
-  def update
-    @mealplan = Mealplan.find(params[:id])
-
-    @mealplan.mealtime_id = params[:mealtime_id]
-    @mealplan.meal_id = params[:meal_id]
-    @mealplan.plan_id = params[:plan_id]
-
-    save_status = @mealplan.save
-
-    if save_status == true
-      redirect_to("/mealplans/#{@mealplan.id}", :notice => "Meal updated successfully.")
-    else
-      render("mealplans/edit.html.erb")
-    end
-  end
-
   def destroy
     @mealplan = Mealplan.find(params[:id])
 

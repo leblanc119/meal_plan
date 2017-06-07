@@ -1,7 +1,6 @@
 <div class="page-header">
   <h2>
     Meal Times
-    <a href="/mealtimes/new" class="btn btn-lg btn-success btn-sm">Add a New Meal Time</a>
   </h2>
 </div>
 
@@ -15,7 +14,6 @@
       <% @mealtimes.each do |mealtime| %>
       <tr>
         <td><%= mealtime.time %></td>
-        <td><%= mealtime.id %></td>
       </tr>
       <% end %>
     </table>

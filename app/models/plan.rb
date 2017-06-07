@@ -15,6 +15,6 @@ class Plan < ApplicationRecord
   has_many :mealplans, :dependent => :destroy
 
   validates :user_id, :presence => true
-  validates :user_id, :uniqueness => { :scope => [:date] }
+  validates :date, :uniqueness => { :scope => [:user_id] }
   validates :date, :presence => true
 end

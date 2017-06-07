@@ -16,9 +16,9 @@ class MealTagsController < ApplicationController
     save_status = @meal_tag.save
 
     if save_status == true
-      redirect_to("/meals/#{@meal_tag.meal_id}", :notice => "Meal tag created successfully.")
+      redirect_to("/meals/#{@meal_tag.meal_id}", :notice => "Tag added to meal successfully.")
     else
-      render("meal_tags/new.html.erb")
+      redirect_to("/meals/#{@meal_tag.meal_id}", :notice => "Tag not added to meal.")
     end
   end
 end

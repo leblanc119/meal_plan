@@ -20,5 +20,8 @@ class Meal < ApplicationRecord
 
   validates :user_id, :presence => true
   validates :name, :presence => true
+  validates :link, :presence => true
   validates :image, :presence => true
+  validates :link, :format => URI::regexp(%w(http https))
+  validates :image, :format => URI::regexp(%w(http https))
 end

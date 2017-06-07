@@ -2,6 +2,9 @@
   <h2>
     My Plans
     <a href="/plans/new" class="btn btn-sm btn-success">New Plan</a>
+    <% if @today_plan != nil  %>
+      <a href="/plans/<%= @today_plan.id  %>" class="btn btn-sm btn-warning">View Today's Plan</a>
+    <% end %>
   </h2>
 </div>
 
