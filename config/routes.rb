@@ -56,14 +56,7 @@ Rails.application.routes.draw do
 
   # READ
   get "/tags", :controller => "tags", :action => "index"
-  get "/tags/:id", :controller => "tags", :action => "show"
-
-  # UPDATE
-  get "/tags/:id/edit", :controller => "tags", :action => "edit"
-  post "/update_tag/:id", :controller => "tags", :action => "update"
-
-  # DELETE
-  get "/delete_tag/:id", :controller => "tags", :action => "destroy"
+  
   #------------------------------
 
   # Routes for the Meal_tag resource:
