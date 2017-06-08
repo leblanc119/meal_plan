@@ -165,6 +165,14 @@ m11.save
 
 Meal.create(name: 'Tangy BBQ Chicken', image:"http://food.fnr.sndimg.com/content/dam/images/food/fullset/2009/4/14/2/FNM060109WhatsYourMeat010b_4_s4x3.jpg.rend.hgtvcom.616.462.jpeg", link: "http://www.foodnetwork.com/recipes/food-network-kitchen/tangy-barbecue-chicken-recipe-2103841", user: u1)
 
+Meal.create(name: 'Filet Mignon with Sherry Mushroom Sauce', image:"http://cdn-image.myrecipes.com/sites/default/files/image/recipes/ck/filet-mignon-ck-1591119-x.jpg", link: "http://www.myrecipes.com/recipe/filet-mignon-with-sherry-mushroom-sauce", user: u1)
+
+Meal.create(name: 'Pistachio Biscotti Cookies', image:"http://cdn-img.instyle.com/sites/default/files/styles/684xflex/public/images/2014/WRN/042114-moms-biscotti-594.jpg?itok=awRZQYYK", link: "http://www.instyle.com/news/made-love-bake-these-pistachio-biscotti-cookies-mom", user: u2)
+
+Meal.create(name: 'Whole Wheat Pumpkin Chocolate Chip Muffins', image:"http://www.ambitiouskitchen.com/wp-content/uploads/2014/10/5-IMG_5779.jpg", link: "http://www.ambitiouskitchen.com/2014/10/whole-wheat-pumpkin-chocolate-chip-muffins/", user: u3)
+
+Meal.create(name: 'Orange-Ginger Chicken and Veggie Bowl', image:"https://media.self.com/photos/58af421cc7d5402e31c66295/4:3/w_746,c_limit/orange-ginger-chicken-veggie-bowl-fore296.jpg", link: "http://www.self.com/recipe/orange-ginger-chicken-veggie-bowl", user: u3)
+
 puts "#{Meal.count} meals in the database"
 
 mt1 = MealTag.new

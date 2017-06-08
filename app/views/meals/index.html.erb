@@ -5,11 +5,15 @@
   </h2>
 </div>
 
+<%= search_form_for @q do |f| %>
+  <div class="form-group">
+    <%= f.label :name_cont, "Name containing" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Enter a few characters" %>
+  </div>
 
-<% @meals.each do |meal| %>
+  <%= f.submit :class => "btn btn-primary btn-block btn-xs" %>
 
-<div class="container">
-</div>
+  <a href="/meals" class="btn btn-default btn-block btn-xs">Clear filters</a>
 <% end %>
 
 <% @meals.each do |meal| %>

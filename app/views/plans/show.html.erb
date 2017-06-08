@@ -101,9 +101,9 @@
           </tr>
           <!-- Post-Dinner Snack-->
           <tr>
-            <th scope="row">Post-Dinner Snack</th>
+            <th scope="row">Evening Snack</th>
             <% @plan.mealplans.each do |plan| %>
-            <% if plan.mealtime.time == "Post-Dinner Snack" %>
+            <% if plan.mealtime.time == "Evening Snack" %>
             <tr><td></td>
             <td><a href ="/meals/<%= plan.meal.id %>"><%= plan.meal.name %></td></a>
             <td><% plan.meal.meal_tags.each do |tag| %>

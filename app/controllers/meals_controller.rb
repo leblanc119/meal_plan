@@ -1,8 +1,8 @@
 class MealsController < ApplicationController
   def index
-    @meals = Meal.all.order(name: :asc)
-    #@q = Meal.ransack(params[:q])
-    #@meals = @q.result(:distinct => true).includes(:meal_tags)
+    #@meals = Meal.all.order(name: :asc)
+    @q = Meal.ransack(params[:q])
+    @meals = @q.result.all.order(name: :asc)
 
     render("meals/index.html.erb")
   end
