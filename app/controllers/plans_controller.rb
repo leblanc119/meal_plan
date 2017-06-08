@@ -2,6 +2,9 @@ class PlansController < ApplicationController
   def index
     @plans = Plan.all.order(date: :desc)
     @today_plan = Plan.find_by(user: current_user, date: Date.today)
+    @today = Date.today
+    @tmrw = @today+1
+    @tmrw_plan = Plan.find_by(user: current_user, date: @tmrw)
 
     render("plans/index.html.erb")
   end

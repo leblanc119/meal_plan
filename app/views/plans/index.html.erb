@@ -5,6 +5,9 @@
     <% if @today_plan != nil  %>
       <a href="/plans/<%= @today_plan.id  %>" class="btn btn-sm btn-warning">View Today's Plan</a>
     <% end %>
+    <% if @tmrw_plan != nil  %>
+      <a href="/plans/<%= @tmrw_plan.id  %>" class="btn btn-sm btn-danger">View Tomorrow's Plan</a>
+    <% end %>
   </h2>
 </div>
 
